@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Para Ti - Anthuane</title>
   
-  <!-- Fuente -->
+  <!-- Fuentes (Asap para la carta, Sour Gummy para el inicio) -->
   <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy&display=swap" rel="stylesheet">
   
   <!-- CSS Externo -->
   <link rel="stylesheet" href="./style.css">
@@ -25,13 +26,13 @@
   </script>
 </head>
 <body>
-<!-- Pantalla de bienvenida para activar el audio -->
-  <div id="welcome-screen">
-    <div class="welcome-content">
-      <p>Tengo una sorpresa para ti...</p>
-      <button id="start-btn">Tocar para abrir 💌</button>
-    </div>
+
+  <!-- Nueva Pantalla de inicio -->
+  <div class="start-screen" id="startScreen">
+    <div class="start-text">Toca para iniciar</div>
+    <div class="heart-icon">♥</div>
   </div>
+
   <main>
     <!-- Sección 1 -->
     <section>
@@ -48,8 +49,8 @@
         Cada día que compartimos juntos,<br>
         valoro más tu apoyo incondicional,<br>
         y agradezco tanto tenerte a mi lado.<br>
-        <a href="./carta.pdf" download>
-          <button id="downloadBtn">Descargar carta 💌</button>
+        <a href="./carta.pdf" target="_blank">
+          <button id="downloadBtn">Abrir carta 💌</button>
         </a>
       </div>
     </section>
