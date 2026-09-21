@@ -14,7 +14,51 @@ html, body {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Arreglo para móviles: 100dvh evita que las barras del navegador tapen cosas */
+/* --- NUEVA PANTALLA DE INICIO --- */
+.start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    background-color: #0d0000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Siempre por encima de todo */
+    cursor: pointer;
+    transition: opacity 0.5s ease-out;
+    user-select: none;
+}
+
+.start-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.start-text {
+    font-family: "Sour Gummy", sans-serif;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #ff5c5c;
+    text-shadow: 0 0 10px #ff5c5c;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.heart-icon {
+    font-size: clamp(3rem, 10vw, 5rem);
+    color: #ff5c5c;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px #ff5c5c);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* --- ESTILOS DEL PROYECTO 3D --- */
 main {
     position: relative;
     width: 100vw;
@@ -60,7 +104,7 @@ a {
     transform-origin: center center;
     transform: rotate(90deg);
     animation: 2s infinite arrow;
-    pointer-events: none; /* Para no molestar al scroll */
+    pointer-events: none;
 }
 
 @keyframes arrow {
@@ -68,62 +112,52 @@ a {
     50% { opacity: 0; }
 }
 
-/* --- Ajustes del texto "Para Ti" y el Nombre --- */
 h1 {
-    font-size: 15vw; /* Agrandado para móviles */
+    font-size: 15vw;
     font-weight: 700;
     padding: 20px;
     animation: 3s ease-in-out fadeIn;
 }
 
 h2 {
-    font-size: 8vw; /* Agrandado para móviles */
+    font-size: 8vw;
     margin-top: 1rem;
     font-style: italic;
     text-shadow: 0 0 10px #ffb6c1;
     animation: 6s ease-in-out infinite float;
 }
 
-/* Ajuste para pantallas grandes (PC) */
 @media (min-width: 768px) {
     h1 { font-size: 6vw; }
     h2 { font-size: 4vw; }
 }
 
-/* --- Ajustes de la tarjeta de la carta --- */
 .love-blur {
     display: inline-block;
-    background: rgba(40, 25, 30, 0.6); /* Un tono más oscuro y translúcido como en la foto */
+    background: rgba(40, 25, 30, 0.6); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    
-    /* Dimensiones ajustadas para que encaje el texto como en la imagen */
     padding: 3rem 2rem;
     border-radius: 20px;
     width: 90%; 
-    max-width: 700px; /* Más ancho para permitir que el texto respire */
+    max-width: 700px;
     margin: 2rem auto;
-    
-    box-shadow: 0 0 30px rgba(255, 182, 193, 0.3); /* Resplandor más suave */
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.3);
     border: 1px solid rgba(255, 182, 193, 0.4);
     animation: 4s ease-in-out infinite glow;
-    
-    /* Formato del texto interno */
     font-size: 1.4rem;
     font-style: italic;
-    line-height: 2; /* Espaciado entre líneas igual al de la foto */
+    line-height: 2;
     color: #fff;
 }
 
-/* Ajuste del tamaño de fuente de la tarjeta en móviles pequeños */
 @media (max-width: 480px) {
     .love-blur {
-        font-size: 1.1rem; /* Letra un poco más chica en móviles para que no se rompa la frase */
+        font-size: 1.1rem;
         padding: 2.5rem 1rem;
         line-height: 1.8;
     }
 }
-
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-30px); }
@@ -140,7 +174,6 @@ h2 {
     50% { box-shadow: 0 0 35px rgba(255, 182, 193, 0.6); }
 }
 
-/* --- Botón Descargar Carta --- */
 #downloadBtn {
     margin-top: 2rem;
     padding: 1rem 2.5rem;
@@ -148,11 +181,9 @@ h2 {
     font-weight: 600;
     color: #fff;
     font-family: 'Asap', sans-serif;
-    
-    /* Color rosa intenso igual al de la foto */
-    background-color: #ff1493; 
+    background-color: #ff1493;
     border: none;
-    border-radius: 30px; /* Bordes bien redondeados */
+    border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
     transition: background 0.3s, transform 0.3s;
@@ -161,52 +192,4 @@ h2 {
 #downloadBtn:hover {
     background-color: #d10f77;
     transform: scale(1.05);
-}
-/* --- Pantalla de Bienvenida (Para el audio) --- */
-#welcome-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100dvh;
-    background-color: #000;
-    z-index: 9999; /* Para que esté por encima de TODO */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1s ease-in-out; /* Efecto suave al desaparecer */
-}
-
-.welcome-content {
-    text-align: center;
-}
-
-.welcome-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    font-style: italic;
-    color: #ffb6c1;
-}
-
-#start-btn {
-    padding: 1rem 2.5rem;
-    font-size: 1.3rem;
-    color: #fff;
-    font-family: 'Asap', sans-serif;
-    background-color: #ff1493;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
-    transition: transform 0.3s;
-}
-
-#start-btn:hover {
-    transform: scale(1.05);
-}
-
-/* Esta clase se usa en JS para desvanecer la pantalla */
-.fade-out {
-    opacity: 0;
-    pointer-events: none;
 }
