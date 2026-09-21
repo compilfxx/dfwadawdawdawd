@@ -68,15 +68,16 @@ a {
     50% { opacity: 0; }
 }
 
+/* --- Ajustes del texto "Para Ti" y el Nombre --- */
 h1 {
-    font-size: 8vw;
+    font-size: 15vw; /* Agrandado para móviles */
     font-weight: 700;
     padding: 20px;
     animation: 3s ease-in-out fadeIn;
 }
 
 h2 {
-    font-size: 6vw;
+    font-size: 8vw; /* Agrandado para móviles */
     margin-top: 1rem;
     font-style: italic;
     text-shadow: 0 0 10px #ffb6c1;
@@ -85,27 +86,44 @@ h2 {
 
 /* Ajuste para pantallas grandes (PC) */
 @media (min-width: 768px) {
-    h1 { font-size: 4vw; }
-    h2 { font-size: 3vw; }
+    h1 { font-size: 6vw; }
+    h2 { font-size: 4vw; }
 }
 
+/* --- Ajustes de la tarjeta de la carta --- */
 .love-blur {
     display: inline-block;
-    background: rgba(255, 192, 203, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 2rem;
+    background: rgba(40, 25, 30, 0.6); /* Un tono más oscuro y translúcido como en la foto */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Dimensiones ajustadas para que encaje el texto como en la imagen */
+    padding: 3rem 2rem;
     border-radius: 20px;
-    font-size: 1.5rem;
-    max-width: 90%;
-    width: 600px;
+    width: 90%; 
+    max-width: 700px; /* Más ancho para permitir que el texto respire */
     margin: 2rem auto;
-    box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
-    line-height: 1.6;
+    
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.3); /* Resplandor más suave */
     border: 1px solid rgba(255, 182, 193, 0.4);
     animation: 4s ease-in-out infinite glow;
+    
+    /* Formato del texto interno */
+    font-size: 1.4rem;
     font-style: italic;
+    line-height: 2; /* Espaciado entre líneas igual al de la foto */
+    color: #fff;
 }
+
+/* Ajuste del tamaño de fuente de la tarjeta en móviles pequeños */
+@media (max-width: 480px) {
+    .love-blur {
+        font-size: 1.1rem; /* Letra un poco más chica en móviles para que no se rompa la frase */
+        padding: 2.5rem 1rem;
+        line-height: 1.8;
+    }
+}
+
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-30px); }
@@ -118,25 +136,29 @@ h2 {
 }
 
 @keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.5); }
-    50% { box-shadow: 0 0 30px rgba(255, 182, 193, 0.8); }
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.3); }
+    50% { box-shadow: 0 0 35px rgba(255, 182, 193, 0.6); }
 }
 
+/* --- Botón Descargar Carta --- */
 #downloadBtn {
-    margin-top: 1.5rem;
-    padding: 1rem 2rem;
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
     font-size: 1.2rem;
+    font-weight: 600;
     color: #fff;
     font-family: 'Asap', sans-serif;
-    background-color: #ff1493;
+    
+    /* Color rosa intenso igual al de la foto */
+    background-color: #ff1493; 
     border: none;
-    border-radius: 25px;
+    border-radius: 30px; /* Bordes bien redondeados */
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+    box-shadow: 0 0 15px rgba(255, 20, 147, 0.5);
     transition: background 0.3s, transform 0.3s;
 }
 
 #downloadBtn:hover {
-    background-color: #a40021;
+    background-color: #d10f77;
     transform: scale(1.05);
 }
