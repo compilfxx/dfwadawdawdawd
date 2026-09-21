@@ -4,10 +4,23 @@ import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js'
 import { SUBTRACTION, Brush, Evaluator } from 'three-bvh-csg';
 
 // Música - Se activa al tocar la pantalla
+// Música y Pantalla de Bienvenida
 const audio = new Audio('musica.mp3');
-document.body.addEventListener('click', () => {
-    audio.play().catch(e => console.log("Audio esperando interacción"));
-}, { once: true });
+const welcomeScreen = document.getElementById('welcome-screen');
+const startBtn = document.getElementById('start-btn');
+
+startBtn.addEventListener('click', () => {
+    // 1. Reproducir la música
+    audio.play().catch(e => console.log("Error de audio:", e));
+    
+    // 2. Desvanecer la pantalla negra
+    welcomeScreen.classList.add('fade-out');
+    
+    // 3. Eliminar la pantalla después de 1 segundo para que no moleste
+    setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+    }, 1000);
+});
 
 // Configuración de la Escena
 const canvas = document.getElementById('canvas');
