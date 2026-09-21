@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Ti - Anthuane</title>
+  
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- CSS Externo -->
+  <link rel="stylesheet" href="./style.css">
+  
+  <!-- Importmap para cargar Three.js -->
+  <script async src="https://ga.jspm.io/npm:es-module-shims@1.6.3/dist/es-module-shims.js" crossorigin="anonymous"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.154.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.154.0/examples/jsm/",
+      "three-mesh-bvh": "https://unpkg.com/three-mesh-bvh@0.6.0/build/index.module.js",
+      "three-bvh-csg": "https://unpkg.com/three-bvh-csg@0.0.7/build/index.module.js"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <main>
+    <!-- Sección 1 -->
+    <section>
+      <div>
+        <h1>Para Ti</h1>
+        <h2>ANTHUANE</h2>
+        <p id="arrow">»</p>
+      </div>
+    </section>
+
+    <!-- Sección 2 (Haz scroll hacia abajo para verla) -->
+    <section>
+      <div class="love-blur">
+        Cada día que compartimos juntos,<br>
+        valoro más tu apoyo incondicional,<br>
+        y agradezco tanto tenerte a mi lado.<br>
+        <a href="./carta.pdf" download>
+          <button id="downloadBtn">Descargar carta 💌</button>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- El fondo 3D se renderiza aquí -->
+  <canvas id="canvas"></canvas>
+
+  <!-- Script Externo -->
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
