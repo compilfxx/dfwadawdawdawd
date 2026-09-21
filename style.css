@@ -162,3 +162,51 @@ h2 {
     background-color: #d10f77;
     transform: scale(1.05);
 }
+/* --- Pantalla de Bienvenida (Para el audio) --- */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    background-color: #000;
+    z-index: 9999; /* Para que esté por encima de TODO */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease-in-out; /* Efecto suave al desaparecer */
+}
+
+.welcome-content {
+    text-align: center;
+}
+
+.welcome-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: #ffb6c1;
+}
+
+#start-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.3rem;
+    color: #fff;
+    font-family: 'Asap', sans-serif;
+    background-color: #ff1493;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+    transition: transform 0.3s;
+}
+
+#start-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Esta clase se usa en JS para desvanecer la pantalla */
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
