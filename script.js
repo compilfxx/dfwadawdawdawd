@@ -3,26 +3,34 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import * as BufferGeometryUtils from 'three/addons/utils/BufferGeometryUtils.js';
 import { SUBTRACTION, Brush, Evaluator } from 'three-bvh-csg';
 
-// Música - Se activa al tocar la pantalla
-// Música y Pantalla de Bienvenida
+// --- LÓGICA DE LA PANTALLA DE INICIO Y AUDIO ---
 const audio = new Audio('musica.mp3');
-const welcomeScreen = document.getElementById('welcome-screen');
-const startBtn = document.getElementById('start-btn');
+audio.loop = true; // Para que la música se repita
+const startScreen = document.getElementById('startScreen');
+let animationStarted = false;
 
-startBtn.addEventListener('click', () => {
-    // 1. Reproducir la música
-    audio.play().catch(e => console.log("Error de audio:", e));
+function startExperience() {
+    if (animationStarted) return;
+    animationStarted = true;
     
-    // 2. Desvanecer la pantalla negra
-    welcomeScreen.classList.add('fade-out');
+    // 1. Reproducir música
+    audio.play().catch(e => console.log("Audio esperando interacción", e));
     
-    // 3. Eliminar la pantalla después de 1 segundo para que no moleste
+    // 2. Desvanecer la pantalla de inicio
+    startScreen.classList.add('hidden');
+    
+    // 3. Eliminarla del todo para que no interfiera
     setTimeout(() => {
-        welcomeScreen.style.display = 'none';
-    }, 1000);
-});
+        startScreen.style.display = 'none';
+    }, 500);
+}
 
-// Configuración de la Escena
+// Escuchar toques o clics en la pantalla de inicio
+startScreen.addEventListener('click', startExperience);
+startScreen.addEventListener('touchstart', startExperience, { passive: false });
+
+
+// --- CONFIGURACIÓN DE LA ESCENA 3D ---
 const canvas = document.getElementById('canvas');
 const scene = new THREE.Scene();
 
