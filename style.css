@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background: #000;
+    overscroll-behavior-x: none;
+    font-family: 'Asap', sans-serif;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Arreglo para móviles: 100dvh evita que las barras del navegador tapen cosas */
+main {
+    position: relative;
+    width: 100vw;
+}
+
+section {
+    width: 100vw;
+    min-height: 100dvh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 1; /* El contenido debe estar por encima del canvas 3D */
+}
+
+/* El canvas 3D se queda fijo al fondo y no interfiere con el scroll */
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#arrow {
+    position: absolute;
+    bottom: 5vh;
+    left: 0;
+    right: 0;
+    font-size: 80px;
+    transform-origin: center center;
+    transform: rotate(90deg);
+    animation: 2s infinite arrow;
+    pointer-events: none; /* Para no molestar al scroll */
+}
+
+@keyframes arrow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+h1 {
+    font-size: 8vw;
+    font-weight: 700;
+    padding: 20px;
+    animation: 3s ease-in-out fadeIn;
+}
+
+h2 {
+    font-size: 6vw;
+    margin-top: 1rem;
+    font-style: italic;
+    text-shadow: 0 0 10px #ffb6c1;
+    animation: 6s ease-in-out infinite float;
+}
+
+/* Ajuste para pantallas grandes (PC) */
+@media (min-width: 768px) {
+    h1 { font-size: 4vw; }
+    h2 { font-size: 3vw; }
+}
+
+.love-blur {
+    display: inline-block;
+    background: rgba(255, 192, 203, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    max-width: 90%;
+    width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
+    line-height: 1.6;
+    border: 1px solid rgba(255, 182, 193, 0.4);
+    animation: 4s ease-in-out infinite glow;
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.5); }
+    50% { box-shadow: 0 0 30px rgba(255, 182, 193, 0.8); }
+}
+
+#downloadBtn {
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: 'Asap', sans-serif;
+    background-color: #ff1493;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+    transition: background 0.3s, transform 0.3s;
+}
+
+#downloadBtn:hover {
+    background-color: #a40021;
+    transform: scale(1.05);
+}
